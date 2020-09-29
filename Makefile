@@ -1,11 +1,11 @@
 CC = gcc-9
-EXECS = sequential
+EXECS = rcm_sequential rcm_openmp
 
 .PHONY: $(EXECS)
 all: $(EXECS)
 
-sequential:
+rcm_sequential:
 	cd src; $(CC) rcm.c functions.c main_sequential.c -fopenmp -o ../bin/$@; cd ..;
 
-parallel:
+rcm_openmp:
 	cd src; $(CC) rcm.c functions.c main_omp.c -fopenmp -o ../bin/$@; cd ..;

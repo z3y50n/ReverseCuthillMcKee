@@ -11,17 +11,14 @@
 **Usage**
 
 In the main folder type:
->make sequential
-
-or
->make parallel
+>make
 
 Then enter:
->./bin/sequential arg1 arg2
+>./bin/rcm_sequential arg1 arg2
 
 or
 
->./bin/parallel arg1 arg2
+>./bin/rcm_openmp arg1 arg2
 
 for sequential and parallel version respectively
 
