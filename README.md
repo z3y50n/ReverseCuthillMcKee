@@ -1,7 +1,7 @@
 # Reverse Cuthill McKee Algorithm
 
 ## Implementation of the algorithm in C and optimizing it using OpenMP
-***
+
 ### An assignment for course "Parallel & Distributed Systems" of AUTH
 ***
 #### Author: Dimitrios Papageorgiou
