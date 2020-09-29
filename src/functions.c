@@ -44,6 +44,7 @@ Graph *initGraph(int *array, int n)
     return graph;
 }
 
+// The parallel implementaion of initGraph using OpenMP
 Graph *ompInitGraph(int *array, int n)
 {
     Graph *graph = (Graph *)malloc(sizeof(Graph));
@@ -159,8 +160,21 @@ int compare(const void *a, const void *b)
     return nodeA->degree - nodeB->degree;
 }
 
+// Sort the nodes of a graph and their neighboors based on their degree
 void sortGraph(Graph *graph)
 {
+    for (int i = 0; i < graph->size; i++)
+    {
+        qsort(graph->nodes[i]->neighbours, graph->nodes[i]->degree, sizeof(Node *), compare);
+    }
+    qsort(graph->nodes, graph->size, sizeof(Node *), compare);
+}
+
+// Parallel implementation of sortGraph using OpenMP
+void ompSortGraph(Graph *graph)
+{
+    int threads = 2 * omp_get_max_threads();
+#pragma omp parallel for num_threads(threads) if (graph->size > 2000)
     for (int i = 0; i < graph->size; i++)
     {
         qsort(graph->nodes[i]->neighbours, graph->nodes[i]->degree, sizeof(Node *), compare);
@@ -176,6 +190,7 @@ void swap(Node **a, Node **b)
     *b = temp;
 }
 
+// Returns the final Graph based on the resulting R array
 Graph *finalGraph(Array *R)
 {
     Graph *G = (Graph *)malloc(sizeof(G));
@@ -190,6 +205,7 @@ Graph *finalGraph(Array *R)
     return G;
 }
 
+// Transforms a graph in the corresponding sparce matrix
 int *output(Graph *graph)
 {
     int n = graph->size;
@@ -221,6 +237,7 @@ int *output(Graph *graph)
     return array;
 }
 
+// Helper function to print a sparce matrix
 void printMatrix(int *arr, int n)
 {
     for (int i = 0; i < n; i++)
@@ -233,6 +250,7 @@ void printMatrix(int *arr, int n)
     }
 }
 
+// Helper function to save a matrix in a csv file
 void saveCsv(int *arr, int n, char *type)
 {
     char path[60] = "../matrices/";
@@ -257,6 +275,7 @@ void saveCsv(int *arr, int n, char *type)
     }
 }
 
+// Generates a random sparse matrix
 int *generateInputMatrix(int n, double density)
 {
     int *arr = (int *)malloc(n * n * sizeof(int));

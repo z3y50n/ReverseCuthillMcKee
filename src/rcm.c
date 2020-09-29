@@ -10,8 +10,6 @@ Array *rcm(Graph *G)
     R = initArr(G->size);
     Q = initQ(G->size);
 
-    sortGraph(G);
-
     Node *node = (Node *)malloc(sizeof(Node));
 
     int graph_count = 0;

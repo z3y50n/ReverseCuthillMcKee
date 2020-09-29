@@ -29,6 +29,7 @@ int main(int argc, char const *argv[])
 
     gettimeofday(&start, NULL);
     graph = initGraph(arr, n);
+    sortGraph(graph);
     R = rcm(graph);
     gettimeofday(&end, NULL);
 

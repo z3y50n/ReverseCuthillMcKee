@@ -57,6 +57,7 @@ void addToArr(Array *R, Node *node);
 
 int compare(const void *a, const void *b);
 void sortGraph(Graph *graph);
+void ompSortGraph(Graph *graph);
 
 void swap(Node **a, Node **b);
 
