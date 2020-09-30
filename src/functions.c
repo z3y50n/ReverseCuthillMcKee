@@ -153,6 +153,7 @@ void addToArr(Array *R, Node *node)
     node->inArray = 1;
 }
 
+// Helper function used in the build in qsort
 int compare(const void *a, const void *b)
 {
     const Node *nodeA = *((Node **)a);
@@ -160,7 +161,7 @@ int compare(const void *a, const void *b)
     return nodeA->degree - nodeB->degree;
 }
 
-// Sort the nodes of a graph and their neighboors based on their degree
+// Sort the nodes of a graph and their neighboors based on their degree using the built-in qsort function
 void sortGraph(Graph *graph)
 {
     for (int i = 0; i < graph->size; i++)

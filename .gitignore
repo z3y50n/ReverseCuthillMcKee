@@ -1,2 +1,4 @@
 matrices_2
 .vscode
+/bin/rcm_sequential
+/bin/rcm_openmp
