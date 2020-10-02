@@ -25,6 +25,8 @@ for sequential and parallel version respectively
 * arg1: N, The size of the Matrix (N x N) 
 * arg2: Density, percentage of non-zero elements
 
+**Note: In the Makefile change the CC variable to match you version of gcc compiler*
+
 ***
 Running the code in the above way will compute the RCM and print the time it took for completion
 
